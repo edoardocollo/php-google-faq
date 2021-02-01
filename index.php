@@ -29,7 +29,18 @@ $db = [
    </head>
    <body>
      <?php
-      var_dump($db);
+     foreach ($db as $question) { ?>
+
+       <h2><?php
+        echo $question['question'];
+       ?></h2>
+
+       <?php foreach (explode('*',$question['answer']) as $answer) { ?>
+        
+         <p><?php echo $answer; ?></p>
+      <?php  } ?>
+
+     <?php };
       ?>
    </body>
  </html>
