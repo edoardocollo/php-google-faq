@@ -1,4 +1,18 @@
 <?php
+
+$contentData = [
+  'logo' => 'https://assets.stickpng.com/images/580b57fcd9996e24bc43c51f.png',
+  'page' => 'Privacy & Termini',
+  'links' => [
+    'Introduzione',
+    'Norme sulla Privacy',
+    'Termini di servizio',
+    'Tecnologie',
+    'Domande frequenti'
+    ]
+];
+
+
 $db = [
   [
     'question' => "Come state implementando la recente decisione della Corte di giustizia dell'Unione europea (CGUE) relativa al diritto all'oblio?",
@@ -26,21 +40,47 @@ $db = [
    <head>
      <meta charset="utf-8">
      <title>google-faq</title>
+     <link rel="stylesheet" href="style.css">
    </head>
    <body>
-     <?php
-     foreach ($db as $question) { ?>
 
-       <h2><?php
-        echo $question['question'];
-       ?></h2>
 
-       <?php foreach (explode('*',$question['answer']) as $answer) { ?>
-        
-         <p><?php echo $answer; ?></p>
-      <?php  } ?>
+     <header>
+       <img src="<?php echo $contentData['logo']; ?>" alt="">
+       <h3><?php echo  $contentData['page']; ?></h3>
+     </header>
+     <nav id="navbar">
+       <ul>
+         <?php
+         foreach ($contentData['links'] as $link) {?>
+          <li><?php
+          echo $link;
+           ?></li>
 
-     <?php };
-      ?>
+         <?php }
+           ?>
+       </ul>
+     </nav>
+
+
+
+
+     <div id="main_content">
+       <?php
+       foreach ($db as $question) { ?>
+         <h2><?php echo $question['question'];?></h2>
+         <?php foreach (explode('*',$question['answer']) as $answer) { ?>
+           <p><?php echo $answer; ?></p>
+         <?php  } ?>
+       <?php };
+       ?>
+     </div>
+
+
+
+
+
+
+
    </body>
  </html>
